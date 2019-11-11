@@ -1419,7 +1419,9 @@ int baronCard(int choice1, int currentPlayer, struct gameState* state)
         if (choice1 > 0) { //Boolean true or going to discard an estate
             int p = 0;//Iterator for hand!
             int card_not_discarded = 1;//Flag for discard set!
-            while(!card_not_discarded) {
+            //bug had to be reset in order to get proper coverage
+            //while(!card_not_discarded) {
+            while(card_not_discarded){
                 if (state->hand[currentPlayer][p] == estate) { //Found an estate card!
                     state->coins += 4;//Add 4 coins to the amount of coins
                     state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][p];
